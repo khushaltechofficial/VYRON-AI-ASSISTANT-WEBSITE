@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #050505;
+  --color-foreground: #F9FAFB;
+  --color-surface: #0a0a0c;
+  --color-primary: #7C3AED;
+  --color-primary-light: #a78bfa;
+  --color-primary-dark: #5B21B6;
+  --color-accent: #f43f5e;
+  --color-accent-light: #fda4af;
+  --color-accent-dark: #be123c;
+  --color-success: #10B981;
+  --color-error: #EF4444;
+  --color-border: rgba(124, 90, 237, 0.15);
+  --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* ===== BASE OVERRIDES ===== */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #5B21B6 #050505;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #7C3AED;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a78bfa;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #050505;
+  color: #F9FAFB;
+  font-family: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(124, 58, 237, 0.4);
+  color: #FFFFFF;
+}
+
+/* ===== TYPOGRAPHY & GRADIENTS ===== */
+.gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, #c4b5fd 50%, #7C3AED 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-accent {
+  background: linear-gradient(135deg, #a78bfa 0%, #7C3AED 50%, #f43f5e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== SHIMMER & GLOW ===== */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(124, 58, 237, 0.1) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: gradient-shift 3s ease-in-out infinite;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% center; }
+  50% { background-position: 200% center; }
+  100% { background-position: 0% center; }
+}
+
+/* ===== IRIS / VYRON STYLED HERO COMPONENTS ===== */
+.vyron-hero-title {
+  font-size: clamp(3rem, 13vw, 11rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  text-shadow: 
+    0 0 40px rgba(124, 58, 237, 0.65), 
+    0 0 80px rgba(124, 58, 237, 0.3), 
+    0 2px 6px rgba(0, 0, 0, 1);
+}
+
+.iris-rule {
+  width: 150px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #7C3AED, transparent);
+  border: none;
+}
+
+/* ===== AUDIO WAVEFORM BARS ===== */
+.iris-wave-bar {
+  display: inline-block;
+  width: 3px;
+  height: 4px;
+  border-radius: 2px;
+  background: #7C3AED;
+  box-shadow: 0 0 8px #7C3AED;
+  animation: wavePulse 1.2s ease-in-out infinite;
+}
+
+.iris-wave-bar:nth-child(1) { animation-delay: 0.0s; }
+.iris-wave-bar:nth-child(2) { animation-delay: 0.15s; }
+.iris-wave-bar:nth-child(3) { animation-delay: 0.3s; }
+.iris-wave-bar:nth-child(4) { animation-delay: 0.45s; }
+.iris-wave-bar:nth-child(5) { animation-delay: 0.2s; }
+.iris-wave-bar:nth-child(6) { animation-delay: 0.35s; }
+.iris-wave-bar:nth-child(7) { animation-delay: 0.1s; }
+
+@keyframes wavePulse {
+  0%, 100% { transform: scaleY(1); opacity: 0.6; }
+  50% { transform: scaleY(5.5); opacity: 1; }
+}
+
+/* ===== MOUSE SCROLL INDICATOR ===== */
+.iris-scroll-dot {
+  animation: scrollDotMove 1.6s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes scrollDotMove {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(12px); opacity: 0; }
+}
+
+/* ===== BENTO INTERACTIVE BOXES ===== */
+.bento-section {
+  --glow-x: 50%;
+  --glow-y: 50%;
+  --glow-intensity: 0;
+  --glow-radius: 250px;
+  --glow-color: 124, 58, 237; /* #7C3AED */
+  --border-color: rgba(124, 58, 237, 0.15);
+  --background-dark: #050505;
+  --white: #ffffff;
+}
+
+.card--border-glow {
+  position: relative;
+  border-radius: 1rem;
+  background: #09090b;
+  border: 1px solid rgba(124, 58, 237, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.card--border-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1.5px;
+  background: radial-gradient(
+    var(--glow-radius) circle at var(--glow-x) var(--glow-y),
+    rgba(124, 58, 237, calc(var(--glow-intensity) * 0.8)) 0%,
+    rgba(124, 58, 237, calc(var(--glow-intensity) * 0.3)) 40%,
+    transparent 70%
+  );
+  border-radius: inherit;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.card--border-glow:hover::after {
+  opacity: 1;
+}
+
+.card--border-glow:hover {
+  box-shadow: 0 4px 20px rgba(88, 28, 135, 0.2), 0 0 35px rgba(124, 58, 237, 0.12);
+  border-color: rgba(124, 58, 237, 0.3);
+  transform: translateY(-2px);
+}
+
+/* ===== MARQUEE ===== */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+/* ===== GLASSMORPHISM PILLS ===== */
+.glass {
+  background: rgba(10, 10, 12, 0.5);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(124, 58, 237, 0.12);
+}
+
+.glass-strong {
+  background: rgba(5, 5, 5, 0.85);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1px solid rgba(124, 58, 237, 0.2);
+}
+
+/* ===== GLASS LIQUID TILES ===== */
+.glass-liquid-tile {
+  background: rgba(10, 10, 12, 0.45);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(124, 58, 237, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-liquid-tile::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle at 30% 30%, rgba(124, 58, 237, 0.08) 0%, transparent 40%),
+              radial-gradient(circle at 70% 70%, rgba(244, 63, 94, 0.04) 0%, transparent 40%);
+  animation: liquid-flow 15s infinite linear;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes liquid-flow {
+  0% { transform: rotate(0deg) translate(0px, 0px) scale(1); }
+  33% { transform: rotate(120deg) translate(10px, -15px) scale(1.05); }
+  66% { transform: rotate(240deg) translate(-10px, 10px) scale(0.95); }
+  100% { transform: rotate(360deg) translate(0px, 0px) scale(1); }
+}
+
+.glass-liquid-tile:hover {
+  box-shadow: 0 12px 40px rgba(124, 58, 237, 0.25), 0 0 30px rgba(124, 58, 237, 0.15);
+  border-color: rgba(124, 58, 237, 0.4);
+  transform: translateY(-4px) scale(1.01);
+}
+
+
+/* ===== EXTRA CUSTOM EFFECTS ===== */
+.pulse-dot {
+  animation: pulseDotEffect 2s infinite;
+}
+
+@keyframes pulseDotEffect {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.4; }
+}
+
+/* ===== TECH MARQUEE AND CHIPS ===== */
+.metric-badge {
+  background: rgba(5, 5, 5, 0.8);
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  backdrop-filter: blur(12px);
+  border-radius: 0.75rem;
+  padding: 0.5rem 1rem;
+}
+
+/* ===== SIMULATED MECHANICAL KEYBOARD GRID ===== */
+.keyboard-key {
+  background: linear-gradient(180deg, #18181b 0%, #09090b 100%);
+  border: 1px solid rgba(124, 58, 237, 0.12);
+  border-bottom: 2px solid rgba(124, 58, 237, 0.25);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  transition: all 0.15s ease;
+}
+
+.keyboard-key:hover {
+  border-color: rgba(124, 58, 237, 0.5);
+  box-shadow: 0 0 10px rgba(124, 58, 237, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  background: linear-gradient(180deg, #27272a 0%, #0f0f12 100%);
+}
+
+.keyboard-key:active {
+  transform: translateY(1.5px);
+  border-bottom-width: 1px;
+  box-shadow: 0 0 2px rgba(124, 58, 237, 0.2);
+}
