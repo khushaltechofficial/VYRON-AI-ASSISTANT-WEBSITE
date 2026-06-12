@@ -31,39 +31,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Cards */}
-      <section className="max-w-4xl mx-auto mb-16 relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-
-        {/* WhatsApp Card */}
-        <motion.a
-          href="https://wa.me/917015140937?text=Hi,%20I%20need%20help%20with%20VYRON%20AI."
-          target="_blank"
-          rel="noopener noreferrer"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="group rounded-3xl overflow-hidden border border-[#25D366]/20 bg-[#09090b]/85 backdrop-blur-xl shadow-2xl relative flex flex-col p-8 hover:border-[#25D366]/50 hover:shadow-[0_0_30px_rgba(37,211,102,0.1)] transition-all duration-300 cursor-pointer"
-        >
-          <div className="w-14 h-14 rounded-2xl bg-[#25D366]/10 border border-[#25D366]/20 flex items-center justify-center mb-6">
-            <MessageCircle className="w-6 h-6 text-[#25D366]" />
-          </div>
-          <h3 className="text-xl font-black text-white mb-2">WhatsApp Support</h3>
-          <p className="text-zinc-500 text-sm leading-relaxed mb-6">
-            Fastest response channel. Send your payment screenshot, license query, or tech issue — we&apos;ll get back to you quickly.
-          </p>
-          <div className="mt-auto space-y-3">
-            <div className="flex items-center gap-3 p-3 rounded-xl bg-[#25D366]/5 border border-[#25D366]/10">
-              <Phone className="w-4 h-4 text-[#25D366] shrink-0" />
-              <span className="text-white font-mono font-bold text-lg tracking-widest">+91 70151 40937</span>
-            </div>
-            <div className="flex items-center gap-2 text-xs text-zinc-600 font-mono">
-              <Clock className="w-3 h-3" />
-              Available: Mon–Sat, 9 AM – 9 PM IST
-            </div>
-          </div>
-          <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity">
-            <ArrowRight className="w-5 h-5 text-[#25D366]" />
-          </div>
-        </motion.a>
+      <section className="max-w-xl mx-auto mb-16 relative z-10 grid grid-cols-1 gap-6">
 
         {/* Email Card */}
         <motion.a
@@ -112,8 +80,8 @@ export default function ContactPage() {
               <h3 className="font-black text-white text-base">Activation Key Support</h3>
               <p className="text-zinc-500 text-sm leading-relaxed">
                 After making payment on the <Link href="/pricing" className="text-[#a78bfa] underline hover:text-white transition-colors">pricing page</Link>, send your{' '}
-                <span className="text-white font-bold">UPI transaction screenshot</span> to WhatsApp{' '}
-                <span className="text-[#25D366] font-bold font-mono">+91 70151 40937</span>.
+                <span className="text-white font-bold">UPI transaction screenshot</span> to our Email{' '}
+                <span className="text-[#a78bfa] font-bold font-mono">smartkhushal2007@gmail.com</span>.
                 Your activation key will be shared within minutes during business hours.
               </p>
             </div>

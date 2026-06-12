@@ -27,7 +27,7 @@ export default function PricingPage() {
     'Dynamic high-tech charts & analytics data visualizations',
     'Facial Biometric Verification / Zero-Trust security gates',
     'Universal Hotkey system (Ctrl+Alt+V for quick command triggers)',
-    'Direct developer WhatsApp support'
+    'Direct developer Email support'
   ];
 
   return (

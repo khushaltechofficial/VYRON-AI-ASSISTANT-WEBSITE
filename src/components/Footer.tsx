@@ -83,15 +83,6 @@ export default function Footer() {
           {/* Social icons */}
           <div className="flex items-center gap-3">
             <a
-              href="https://wa.me/917015140937"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#25D366] hover:border-[#25D366] hover:bg-[#25D366]/10 transition-all duration-300"
-              aria-label="WhatsApp"
-            >
-              <MessageCircle className="w-4 h-4" />
-            </a>
-            <a
               href="https://www.instagram.com/vyron_ai_assistant/"
               target="_blank"
               rel="noopener noreferrer"

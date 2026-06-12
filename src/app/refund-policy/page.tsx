@@ -22,13 +22,12 @@ export default function RefundPolicyPage() {
             buyer protection
           </span>
           <h1 className="text-4xl sm:text-6xl font-black tracking-tight leading-none text-white">
-            7-Day{' '}
             <span className="text-emerald-400" style={{ filter: 'drop-shadow(0 0 15px rgba(16,185,129,0.4))' }}>
               Refund Policy
             </span>
           </h1>
           <p className="text-zinc-500 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
-            We believe in VYRON AI so strongly that we offer a full 7-day money-back guarantee. No questions asked, no complex processes. If you're not satisfied, we refund your money completely.
+            We provide a 7-day refund policy, but strictly on the condition that your Activation Key has not been activated. Once the key is activated, no refund will be given under any circumstances.
           </p>
         </motion.div>
       </section>
@@ -39,8 +38,8 @@ export default function RefundPolicyPage() {
           {
             icon: ShieldCheck,
             color: 'emerald',
-            title: '7-Day Protection',
-            desc: 'If VYRON AI doesn\'t work for you within 7 days of purchase - for any reason - you get a 100% refund.',
+            title: 'Refund Eligibility',
+            desc: 'Refunds are only processed if the software key is strictly un-activated within 7 days of purchase. Once activated, no refunds are provided.',
           },
           {
             icon: Infinity,
@@ -97,10 +96,10 @@ export default function RefundPolicyPage() {
           <div className="space-y-3">
             <div className="flex items-center gap-3">
               <RefreshCcw className="w-5 h-5 text-emerald-400 shrink-0" />
-              <h2 className="text-lg font-black text-white">Complete Refund — No Questions Asked</h2>
+              <h2 className="text-lg font-black text-white">Refund Eligibility Conditions</h2>
             </div>
             <p className="text-zinc-500 text-sm leading-relaxed pl-8">
-              If VYRON AI does not meet your expectations within <span className="text-white font-bold">7 days</span> of your purchase, you are eligible for a complete, 100% refund. Simply message us on WhatsApp with your UTR number and request a refund. We will process it within 24–48 hours directly to your original UPI account.
+              If you have purchased VYRON AI but have not yet activated your license key, you may request a refund within <span className="text-white font-bold">7 days</span>. Please note that <span className="text-white font-bold">once the key is activated, no refund will be given</span>. To request an eligible refund, email us your UTR number.
             </p>
           </div>
 
@@ -151,7 +150,7 @@ export default function RefundPolicyPage() {
             <h2 className="text-lg font-black text-white">How to Request a Refund</h2>
             <div className="space-y-3">
               {[
-                { step: '01', text: 'Message us on WhatsApp: +91 70151 40937' },
+                { step: '01', text: 'Email us at: smartkhushal2007@gmail.com' },
                 { step: '02', text: 'Share your UTR / Transaction ID (12-digit number from your payment)' },
                 { step: '03', text: 'We verify and initiate refund within 24–48 hours to your UPI' },
               ].map((item) => (
@@ -185,12 +184,10 @@ export default function RefundPolicyPage() {
               Get VYRON AI — ₹400 <ArrowRight className="w-4 h-4" />
             </Link>
             <a
-              href="https://wa.me/917015140937?text=Hi,%20I%20have%20a%20question%20about%20VYRON%20AI."
-              target="_blank"
-              rel="noopener noreferrer"
+              href="mailto:smartkhushal2007@gmail.com"
               className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full border border-zinc-700 text-zinc-300 font-bold text-xs uppercase tracking-widest hover:border-zinc-500 hover:text-white transition-all"
             >
-              <MessageCircle className="w-4 h-4" /> Ask on WhatsApp
+              <MessageCircle className="w-4 h-4" /> Email Support
             </a>
           </div>
         </motion.div>

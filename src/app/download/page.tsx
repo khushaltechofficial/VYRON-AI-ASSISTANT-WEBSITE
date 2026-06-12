@@ -249,9 +249,9 @@ export default function DownloadPage() {
                 <RefreshCcw className="w-5 h-5 text-emerald-400" />
               </div>
               <div className="space-y-1">
-                <h3 className="font-black text-white text-base">7-Day Full Refund Guarantee</h3>
+                <h3 className="font-black text-white text-base">7-Day Refund Guarantee (Un-activated)</h3>
                 <p className="text-zinc-500 text-sm leading-relaxed">
-                  Not satisfied? Get a <span className="text-white font-bold">complete refund within 7 days</span> — no questions asked. Just message us on WhatsApp with your UTR number.
+                  Changed your mind? Get a <span className="text-white font-bold">complete refund within 7 days</span> — as long as your key is un-activated. Just email us your UTR number.
                 </p>
               </div>
             </div>
