@@ -21,7 +21,7 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
   const [utr, setUtr] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
-  const [copied, setCopied] = useState(false);
+
   const [scratched, setScratched] = useState(false);
 
   const whatsappNumber = '+91 70151 40937';
@@ -57,11 +57,7 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
     if (error) setError('');
   };
 
-  const copyUpiId = () => {
-    navigator.clipboard.writeText(upiId);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
+
 
   const handleClose = () => {
     setUtr('');
@@ -147,14 +143,6 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
                   />
                 </div>
 
-                {/* UPI ID */}
-                <div className="flex items-center justify-center gap-2">
-                  <span className="text-zinc-500 text-xs font-mono">UPI ID:</span>
-                  <span className="text-white font-mono font-bold text-sm">{upiId}</span>
-                  <button onClick={copyUpiId} className="p-1 rounded hover:bg-white/5 text-zinc-500 hover:text-[#a78bfa] transition-colors">
-                    {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-                  </button>
-                </div>
 
                 <p className="text-zinc-500 text-xs leading-relaxed">
                   Scan with <span className="text-white font-bold">PhonePe, Google Pay, Paytm, BHIM</span> — ₹{amountToPay} is pre-filled.
