@@ -46,7 +46,7 @@ export default function DownloadPage() {
         >
           {/* Header Banner */}
           <div className="bg-gradient-to-r from-[#7C3AED] to-[#5B21B6] py-3 text-center text-[10px] font-mono font-black uppercase tracking-widest text-white shadow-inner">
-            ⚡ Windows Desktop Agent — v1.2.1 Stable Build
+            ⚡ Windows Desktop Agent — v1.2.4 Stable Build
           </div>
 
           <div className="p-8 space-y-6 flex flex-col flex-1">
@@ -55,7 +55,7 @@ export default function DownloadPage() {
                 <Monitor className="w-6 h-6 text-white" />
               </div>
               <span className="text-[10px] font-mono font-bold tracking-widest px-3 py-1 rounded-full border border-[#7C3AED]/20 bg-[#7C3AED]/5 text-[#a78bfa]">
-                v1.2.1 Stable
+                v1.2.4 Stable
               </span>
             </div>
 
@@ -69,7 +69,7 @@ export default function DownloadPage() {
             {/* Specifications */}
             <div className="grid grid-cols-3 gap-3 text-xs font-mono text-zinc-400 select-none border-y border-white/5 py-4">
               <span className="flex items-center gap-1.5">
-                <HardDrive className="w-3.5 h-3.5 text-[#a78bfa]" /> ~437 MB
+                <HardDrive className="w-3.5 h-3.5 text-[#a78bfa]" /> ~197 MB
               </span>
               <span className="flex items-center gap-1.5">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#a78bfa]" /> Verified .exe
@@ -86,7 +86,7 @@ export default function DownloadPage() {
                 {[
                   'Windows 10 / 11 (64-bit)',
                   '4 GB RAM minimum',
-                  '~437 MB disk space',
+                  '~197 MB disk space',
                   'Mic (for Voice commands)',
                   'Active Internet Connection',
                   'Gemini API Key (Free tier OK)',
