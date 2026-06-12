@@ -245,7 +245,7 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
                     href="/api/download/paid"
                     className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#7C3AED] to-[#5B21B6] hover:shadow-[0_0_15px_rgba(124,58,237,0.3)] text-white font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-2 transition-all duration-200"
                   >
-                    <span>Download VyronAI.exe — v1.2.1</span>
+                    <span>Download VyronAI.exe — v1.2.4</span>
                   </a>
                   <button
                     onClick={handleClose}

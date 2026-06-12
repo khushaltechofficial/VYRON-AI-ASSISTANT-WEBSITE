@@ -197,7 +197,7 @@ export default function Footer() {
 
             <div className="flex flex-col gap-1 border-t border-white/5 pt-4">
               <span className="text-zinc-600 text-[10px] uppercase font-mono tracking-wider">Parent Command</span>
-              <span className="text-zinc-400 text-xs font-mono font-medium">VYRON AI v1.2.1 - Stable</span>
+              <span className="text-zinc-400 text-xs font-mono font-medium">VYRON AI v1.2.4 - Stable</span>
             </div>
           </div>
         </div>

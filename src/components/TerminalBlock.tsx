@@ -5,7 +5,7 @@ const LINES = [
   { text: '$ pip install vyron-ai', color: '#10B981', delay: 300 },
   { text: 'Resolving dependencies...', color: '#6B7280', delay: 1000 },
   { text: '[████████████████████] 100%', color: '#6B7280', delay: 1800 },
-  { text: '✓ VYRON AI v1.2.1 installed successfully', color: '#F59E0B', delay: 2600 },
+  { text: '✓ VYRON AI v1.2.4 installed successfully', color: '#F59E0B', delay: 2600 },
   { text: '$ python main.py', color: '#10B981', delay: 3400 },
   { text: '⚡ VYRON AI Online. Awaiting your command...', color: '#A855F7', delay: 4200 },
 ];
