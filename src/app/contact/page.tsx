@@ -62,6 +62,38 @@ export default function ContactPage() {
             <ArrowRight className="w-5 h-5 text-[#a78bfa]" />
           </div>
         </motion.a>
+
+        {/* WhatsApp Card */}
+        <motion.a
+          href="https://wa.me/917015140937"
+          target="_blank"
+          rel="noopener noreferrer"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="group rounded-3xl overflow-hidden border border-[#25D366]/20 bg-[#09090b]/85 backdrop-blur-xl shadow-2xl relative flex flex-col p-8 hover:border-[#25D366]/50 hover:shadow-[0_0_30px_rgba(37,211,102,0.1)] transition-all duration-300 cursor-pointer"
+        >
+          <div className="w-14 h-14 rounded-2xl bg-[#25D366]/10 border border-[#25D366]/20 flex items-center justify-center mb-6">
+            <MessageCircle className="w-6 h-6 text-[#25D366]" />
+          </div>
+          <h3 className="text-xl font-black text-white mb-2">WhatsApp Support</h3>
+          <p className="text-zinc-500 text-sm leading-relaxed mb-6">
+            Instant help via WhatsApp. Tap to start a chat with our support team.
+          </p>
+          <div className="mt-auto space-y-3">
+            <div className="flex items-center gap-3 p-3 rounded-xl bg-[#25D366]/5 border border-[#25D366]/10">
+              <MessageCircle className="w-4 h-4 text-[#25D366] shrink-0" />
+              <span className="text-white font-mono font-bold text-sm">Chat on WhatsApp</span>
+            </div>
+            <div className="flex items-center gap-2 text-xs text-zinc-600 font-mono">
+              <Clock className="w-3 h-3" />
+              Instant response during business hours
+            </div>
+          </div>
+          <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity">
+            <ArrowRight className="w-5 h-5 text-[#25D366]" />
+          </div>
+        </motion.a>
       </section>
 
       {/* Info Banner */}
