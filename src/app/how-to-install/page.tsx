@@ -8,7 +8,7 @@ const installSteps = [
   {
     step: 1,
     title: 'Download the Installer',
-    description: 'Go to the Downloads page and click "Download VyronAI.exe". The executable is approximately ~350 MB.',
+    description: 'Go to the Downloads page and click "Download VyronAI.exe". The executable is approximately ~247 MB.',
     tip: 'Ensure a stable connection. The download takes under a minute on average.',
     action: {
       label: 'Go to Downloads →',

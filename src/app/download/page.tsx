@@ -69,7 +69,7 @@ export default function DownloadPage() {
             {/* Specifications */}
             <div className="grid grid-cols-3 gap-3 text-xs font-mono text-zinc-400 select-none border-y border-white/5 py-4">
               <span className="flex items-center gap-1.5">
-                <HardDrive className="w-3.5 h-3.5 text-[#a78bfa]" /> ~197 MB
+                <HardDrive className="w-3.5 h-3.5 text-[#a78bfa]" /> ~247 MB
               </span>
               <span className="flex items-center gap-1.5">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#a78bfa]" /> Verified .exe
@@ -86,7 +86,7 @@ export default function DownloadPage() {
                 {[
                   'Windows 10 / 11 (64-bit)',
                   '4 GB RAM minimum',
-                  '~197 MB disk space',
+                  '~247 MB disk space',
                   'Mic (for Voice commands)',
                   'Active Internet Connection',
                   'Gemini API Key (Free tier OK)',
