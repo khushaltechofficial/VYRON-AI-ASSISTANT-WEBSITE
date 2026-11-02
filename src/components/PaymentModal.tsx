@@ -3,13 +3,14 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, CheckCircle, MessageSquare, AlertCircle, Copy, Check } from 'lucide-react';
-import { QRCodeSVG } from 'qrcode.react';
+import Image from 'next/image';
 import Link from 'next/link';
 import ScratchCard from './ScratchCard';
 
 interface PaymentModalProps {
   isOpen: boolean;
   onClose: () => void;
+  type: 'pc' | 'android';
 }
 
 // Strict UTR validation: UPI UTR is always exactly 12 digits numeric
@@ -17,7 +18,7 @@ function isValidUTR(utr: string): boolean {
   return /^\d{12}$/.test(utr.trim());
 }
 
-export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
+export default function PaymentModal({ isOpen, onClose, type }: PaymentModalProps) {
   const [utr, setUtr] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
@@ -25,9 +26,18 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
   const [scratched, setScratched] = useState(false);
 
   const whatsappNumber = '+91 70151 40937';
-  const upiId = '7015140937-2@ybl';
-  const amountToPay = scratched ? 360 : 400;
-  const whatsappLink = `https://wa.me/917015140937?text=Hi,%20I%20have%20completed%20the%20payment%20of%20%E2%82%B9${amountToPay}%20for%20VYRON%20AI%20License.%20My%20UTR%20Number%20is:%20${encodeURIComponent(utr.trim())}.%20Please%20send%20me%20the%20activation%20key.`;
+  const upiId = '7015140937@fam';
+  
+  const mrp = type === 'pc' ? 1200 : 1000;
+  const basePrice = type === 'pc' ? 400 : 200;
+  const scratchedPrice = type === 'pc' ? 360 : 180;
+  const amountToPay = scratched ? scratchedPrice : basePrice;
+  const linkText = type === 'pc' ? 'Download VyronAI.exe — v2.0' : 'Download VYRON-ANDROID.apk';
+  const downloadLinkUrl = type === 'pc' 
+    ? 'https://github.com/khushaltechofficial/vyron-os-public/releases/download/v2.0/VyronAI.exe'
+    : 'https://github.com/khushaltechofficial/VYRON-ANDROID/releases/download/1.0/app-debug.apk';
+    
+  const whatsappLink = `https://wa.me/917015140937?text=Hi,%20I%20have%20completed%20the%20payment%20of%20%E2%82%B9${amountToPay}%20for%20VYRON%20AI%20${type === 'pc' ? 'PC' : 'Android'}%20License.%20My%20UTR%20Number%20is:%20${encodeURIComponent(utr.trim())}.%20Please%20send%20me%20the%20activation%20key.`;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -103,12 +113,14 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
                 {/* Header */}
                 <div>
                   <h3 className="text-xl font-black tracking-tight uppercase">Get VYRON AI License</h3>
-                  <p className="text-zinc-500 text-xs font-mono tracking-widest uppercase mt-1">₹400 — One-Time Lifetime Key</p>
+                  <p className="text-zinc-500 text-xs font-mono tracking-widest uppercase mt-1">
+                    <span className="line-through text-zinc-600 mr-2">₹{mrp}</span>₹{basePrice} — One-Time Lifetime Key
+                  </p>
                 </div>
 
                 {/* Scratch Card */}
                 <div className="my-2 border border-zinc-800/80 rounded-2xl p-1 bg-black/40 overflow-hidden">
-                  <ScratchCard onScratched={() => setScratched(true)} />
+                  <ScratchCard onScratched={() => setScratched(true)} basePrice={basePrice} scratchedPrice={scratchedPrice} />
                 </div>
 
                 {/* Amount Banner */}
@@ -117,35 +129,31 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
                   <div className="flex items-center gap-2">
                     {scratched ? (
                       <>
-                        <span className="text-zinc-500 line-through text-xs font-mono">₹400</span>
-                        <span className="text-emerald-400 font-black text-2xl">₹360</span>
+                        <span className="text-zinc-500 line-through text-xs font-mono">₹{basePrice}</span>
+                        <span className="text-emerald-400 font-black text-2xl">₹{amountToPay}</span>
                       </>
                     ) : (
-                      <span className="text-white font-black text-2xl">₹400</span>
+                      <span className="text-white font-black text-2xl">₹{amountToPay}</span>
                     )}
                   </div>
                 </div>
 
-                {/* QR Code — dynamic, updates with amount */}
-                <div className="mx-auto w-56 h-56 bg-white rounded-2xl p-2 flex items-center justify-center shadow-lg shadow-[#7C3AED]/10 relative">
-                  {/* Decorative corner borders */}
-                  <div className="absolute top-[-2px] left-[-2px] w-5 h-5 border-t-2 border-l-2 border-[#7C3AED] rounded-tl" />
-                  <div className="absolute top-[-2px] right-[-2px] w-5 h-5 border-t-2 border-r-2 border-[#7C3AED] rounded-tr" />
-                  <div className="absolute bottom-[-2px] left-[-2px] w-5 h-5 border-b-2 border-l-2 border-[#7C3AED] rounded-bl" />
-                  <div className="absolute bottom-[-2px] right-[-2px] w-5 h-5 border-b-2 border-r-2 border-[#7C3AED] rounded-br" />
-                  <QRCodeSVG
-                    value={`upi://pay?pa=7015140937-2@ybl&pn=VYRON%20AI&am=${amountToPay}&cu=INR`}
-                    size={200}
-                    bgColor="#ffffff"
-                    fgColor="#000000"
-                    level="M"
-                    className="rounded-xl"
-                  />
+                {/* QR Code Scanner Image */}
+                <div className="mx-auto max-w-[260px] rounded-2xl overflow-hidden border border-[#7C3AED]/40 shadow-xl shadow-[#7C3AED]/15 relative bg-zinc-950 p-2">
+                  <div className="relative w-full aspect-[9/16] rounded-xl overflow-hidden">
+                    <Image
+                      src="/fam_scanner.png"
+                      alt="Scan UPI QR to Pay"
+                      fill
+                      className="object-contain"
+                      priority
+                    />
+                  </div>
                 </div>
 
 
                 <p className="text-zinc-500 text-xs leading-relaxed">
-                  Scan with <span className="text-white font-bold">PhonePe, Google Pay, Paytm, BHIM</span> — ₹{amountToPay} is pre-filled.
+                  Scan with <span className="text-white font-bold">PhonePe, Google Pay, Paytm, FamApp, BHIM</span> or any UPI app.
                 </p>
 
                 {/* Strict UTR Form */}
@@ -230,10 +238,10 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
                     <span>Send on WhatsApp — Get Key</span>
                   </a>
                   <a
-                    href="/api/download/paid"
+                    href={downloadLinkUrl}
                     className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#7C3AED] to-[#5B21B6] hover:shadow-[0_0_15px_rgba(124,58,237,0.3)] text-white font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-2 transition-all duration-200"
                   >
-                    <span>Download VyronAI.exe — v1.2.5</span>
+                    <span>{linkText}</span>
                   </a>
                   <button
                     onClick={handleClose}
