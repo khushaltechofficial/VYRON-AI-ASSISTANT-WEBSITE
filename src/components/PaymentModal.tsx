@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, CheckCircle, MessageSquare, AlertCircle, Copy, Check } from 'lucide-react';
-import Image from 'next/image';
+import { QRCodeSVG } from 'qrcode.react';
 import Link from 'next/link';
 import ScratchCard from './ScratchCard';
 
@@ -26,7 +26,7 @@ export default function PaymentModal({ isOpen, onClose, type }: PaymentModalProp
   const [scratched, setScratched] = useState(false);
 
   const whatsappNumber = '+91 70151 40937';
-  const upiId = '7015140937@fam';
+  const upiId = '7015140937-2@ybl';
   
   const mrp = type === 'pc' ? 1200 : 1000;
   const basePrice = type === 'pc' ? 400 : 200;
@@ -138,22 +138,26 @@ export default function PaymentModal({ isOpen, onClose, type }: PaymentModalProp
                   </div>
                 </div>
 
-                {/* QR Code Scanner Image */}
-                <div className="mx-auto max-w-[260px] rounded-2xl overflow-hidden border border-[#7C3AED]/40 shadow-xl shadow-[#7C3AED]/15 relative bg-zinc-950 p-2">
-                  <div className="relative w-full aspect-[9/16] rounded-xl overflow-hidden">
-                    <Image
-                      src="/fam_scanner.png"
-                      alt="Scan UPI QR to Pay"
-                      fill
-                      className="object-contain"
-                      priority
-                    />
-                  </div>
+                {/* Dynamic QR Code — Autofills exact amount */}
+                <div className="mx-auto w-56 h-56 bg-white rounded-2xl p-2 flex items-center justify-center shadow-lg shadow-[#7C3AED]/10 relative">
+                  {/* Decorative corner borders */}
+                  <div className="absolute top-[-2px] left-[-2px] w-5 h-5 border-t-2 border-l-2 border-[#7C3AED] rounded-tl" />
+                  <div className="absolute top-[-2px] right-[-2px] w-5 h-5 border-t-2 border-r-2 border-[#7C3AED] rounded-tr" />
+                  <div className="absolute bottom-[-2px] left-[-2px] w-5 h-5 border-b-2 border-l-2 border-[#7C3AED] rounded-bl" />
+                  <div className="absolute bottom-[-2px] right-[-2px] w-5 h-5 border-b-2 border-r-2 border-[#7C3AED] rounded-br" />
+                  <QRCodeSVG
+                    value={`upi://pay?pa=7015140937-2@ybl&pn=VYRON%20AI&am=${amountToPay}&cu=INR`}
+                    size={200}
+                    bgColor="#ffffff"
+                    fgColor="#000000"
+                    level="M"
+                    className="rounded-xl"
+                  />
                 </div>
 
 
                 <p className="text-zinc-500 text-xs leading-relaxed">
-                  Scan with <span className="text-white font-bold">PhonePe, Google Pay, Paytm, FamApp, BHIM</span> or any UPI app.
+                  Scan with <span className="text-white font-bold">PhonePe, Google Pay, Paytm, BHIM</span> — ₹{amountToPay} is pre-filled.
                 </p>
 
                 {/* Strict UTR Form */}
