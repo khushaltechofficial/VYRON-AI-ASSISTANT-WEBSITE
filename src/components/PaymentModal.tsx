@@ -26,7 +26,7 @@ export default function PaymentModal({ isOpen, onClose, type }: PaymentModalProp
   const [scratched, setScratched] = useState(false);
 
   const whatsappNumber = '+91 70151 40937';
-  const upiId = '7015140937-2@ybl';
+  const upiId = '7015140937@fam';
   
   const mrp = type === 'pc' ? 1200 : 1000;
   const basePrice = type === 'pc' ? 400 : 200;
@@ -146,7 +146,7 @@ export default function PaymentModal({ isOpen, onClose, type }: PaymentModalProp
                   <div className="absolute bottom-[-2px] left-[-2px] w-5 h-5 border-b-2 border-l-2 border-[#7C3AED] rounded-bl" />
                   <div className="absolute bottom-[-2px] right-[-2px] w-5 h-5 border-b-2 border-r-2 border-[#7C3AED] rounded-br" />
                   <QRCodeSVG
-                    value={`upi://pay?pa=7015140937-2@ybl&pn=VYRON%20AI&am=${amountToPay}&cu=INR`}
+                    value={`upi://pay?pa=7015140937@fam&pn=yashika%20khushal&am=${amountToPay}&cu=INR`}
                     size={200}
                     bgColor="#ffffff"
                     fgColor="#000000"
